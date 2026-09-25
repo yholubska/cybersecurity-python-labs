@@ -1,0 +1,35 @@
+[
+    {
+        "event": "login",
+        "user": "yaryna",
+        "result": "success",
+        "timestamp": "2026-09-25 09:02:57",
+        "args": [
+            "yaryna",
+            "***"
+        ],
+        "kwargs": {}
+    },
+    {
+        "event": "login",
+        "user": "admin",
+        "result": "failure",
+        "timestamp": "2026-09-25 09:02:57",
+        "args": [
+            "admin",
+            "***"
+        ],
+        "kwargs": {}
+    },
+    {
+        "event": "login",
+        "user": "",
+        "result": "failure",
+        "timestamp": "2026-09-25 09:02:57",
+        "args": [
+            "",
+            "***"
+        ],
+        "kwargs": {}
+    }
+]

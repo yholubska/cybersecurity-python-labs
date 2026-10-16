@@ -1,6 +1,3 @@
-"""
-Модуль для виконання Завдання 3: Хешування, CSV-база та JSON-логування.
-"""
 import csv
 import datetime
 import functools
@@ -9,10 +6,9 @@ import json
 import os
 import sys
 
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../../')))
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../")))
 from shared.student import STUDENT_NAME, VARIANT_NUMBER
 
-# Персональна сіль (доповнена нулями до 5 символів)
 PERSONAL_SALT = f"{VARIANT_NUMBER:05d}"
 MIN_PASSWORD_LENGTH = 11
 
@@ -22,7 +18,6 @@ class ValidationError(Exception):
 
 
 def log_event(func):
-    """Декоратор для логування спроб входу у JSON файл."""
 
     @functools.wraps(func)
     def wrapper(*args, **kwargs):
@@ -39,9 +34,11 @@ def log_event(func):
                 "event": "login",
                 "user": username,
                 "result": status,
-                "timestamp": datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d %H:%M:%S"),
-                "args": [username, "***"],  # Приховуємо пароль у логах
-                "kwargs": kwargs
+                "timestamp": datetime.datetime.now(datetime.timezone.utc).strftime(
+                    "%Y-%m-%d %H:%M:%S"
+                ),
+                "args": [username, "***"],
+                "kwargs": kwargs,
             }
 
             data_dir = os.path.join(os.path.dirname(__file__), "data")
@@ -70,24 +67,23 @@ def log_event(func):
 
 
 def generate_hash(password: str, salt: str = "00000") -> str:
-    """Генерує sha256 хеш пароля із сіллю."""
     if not password or not salt:
         raise ValueError("Пароль або сіль не можуть бути порожніми.")
     if len(password) < MIN_PASSWORD_LENGTH:
-        raise ValidationError(f"Довжина пароля менша за {MIN_PASSWORD_LENGTH} символів.")
+        raise ValidationError(
+            f"Довжина пароля менша за {MIN_PASSWORD_LENGTH} символів."
+        )
 
     combined = password + salt
-    return hashlib.sha256(combined.encode('utf-8')).hexdigest()
+    return hashlib.sha256(combined.encode("utf-8")).hexdigest()
 
 
 def create_user(username, password):
-    """Створює запис користувача з хешованим паролем."""
     hash_value = generate_hash(password, PERSONAL_SALT)
     return username, hash_value
 
 
 def create_users(users_list):
-    """Створює CSV базу даних користувачів."""
     data_dir = os.path.join(os.path.dirname(__file__), "data")
     os.makedirs(data_dir, exist_ok=True)
     csv_path = os.path.join(data_dir, "users.csv")
@@ -109,7 +105,6 @@ def create_users(users_list):
 
 @log_event
 def login(username: str, password: str, users_db: list) -> bool:
-    """Перевіряє облікові дані користувача."""
     if not username or not password:
         raise ValueError("Логін або пароль не можуть бути порожніми.")
 
@@ -126,7 +121,6 @@ def login(username: str, password: str, users_db: list) -> bool:
 
 
 def main():
-    """Головна функція для тестування роботи модуля."""
     print("--- Завдання 3: Хешування та логування ---")
     print(f"Студент: {STUDENT_NAME}, Варіант: {VARIANT_NUMBER}\n")
 
@@ -140,7 +134,7 @@ def main():
         ("guest", "GuestAccount123"),
         ("developer", "DevEnvP@ssword"),
         ("analyst", "DataAnalysis2026"),
-        ("ceo", "ChiefExecPass!")
+        ("ceo", "ChiefExecPass!"),
     )
 
     create_users(users_to_register)
@@ -168,7 +162,9 @@ def main():
         print(f"Вхід для yaryna: {'УСПІШНО' if is_logged_in else 'ВІДМОВЛЕНО'}")
 
         is_logged_in = login("admin", "WrongPassword", users_db)
-        print(f"Вхід для admin (невірний пароль): {'УСПІШНО' if is_logged_in else 'ВІДМОВЛЕНО'}")
+        print(
+            f"Вхід для admin (невірний пароль): {'УСПІШНО' if is_logged_in else 'ВІДМОВЛЕНО'}"
+        )
 
         login("", "password", users_db)
     except ValueError as e:

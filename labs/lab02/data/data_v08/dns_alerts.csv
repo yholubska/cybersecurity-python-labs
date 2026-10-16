@@ -1,0 +1,12 @@
+Timestamp,ClientIP,Domain,QueryType,AlertKind,Reason
+2026-09-27T08:03:00,10.0.0.20,bad-domain.example.invalid,A,BLACKMATCH,домен у чорному списку
+2026-09-27T08:04:00,10.0.0.21,malware-test.example.invalid,A,BLACKMATCH,домен у чорному списку
+2026-09-27T08:05:00,10.0.0.22,ajd83kdm29dk20skd02ld9skd02jd92jd92jd92jd92j.example.com,A,DGA-DETECT,надто довгий піддомен (25+ символів)
+2026-09-27T08:06:00,10.0.0.23,xj3k9q2m7v5n1p8z4r6t0y2u4i6o8p0a2s4d6f8g0h2j4k6l8.top,AAAA,DGA-DETECT,надто довгий піддомен (25+ символів)
+2026-09-27T08:06:00,10.0.0.23,xj3k9q2m7v5n1p8z4r6t0y2u4i6o8p0a2s4d6f8g0h2j4k6l8.top,AAAA,SUSPICIOUS-TLD,підозрілий TLD .top
+2026-09-27T08:07:00,10.0.0.24,invoice-update.zip,A,BLACKMATCH,домен у чорному списку
+2026-09-27T08:07:00,10.0.0.24,invoice-update.zip,A,SUSPICIOUS-TLD,підозрілий TLD .zip
+2026-09-27T08:08:00,10.0.0.25,qwe98asd76zxc54rty32fgh10vbn88.xyz,TXT,DGA-DETECT,надто довгий піддомен (25+ символів)
+2026-09-27T08:08:00,10.0.0.25,qwe98asd76zxc54rty32fgh10vbn88.xyz,TXT,SUSPICIOUS-TLD,підозрілий TLD .xyz
+2026-09-27T08:11:00,10.0.0.28,very-long-subdomain-name-used-for-dns-tunneling-demo-01234567890123456789.example.net,TXT,DGA-DETECT,надто довгий піддомен (25+ символів)
+2026-09-27T08:11:00,10.0.0.28,very-long-subdomain-name-used-for-dns-tunneling-demo-01234567890123456789.example.net,TXT,LONG-DOMAIN,довжина домену 85 >= 60

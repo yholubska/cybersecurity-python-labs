@@ -2,7 +2,7 @@ import os
 import random
 import sys
 
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../../')))
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../")))
 
 from shared.student import STUDENT_NAME, VARIANT_NUMBER
 
@@ -12,21 +12,26 @@ def analyze_passwords():
     print(f"Студент: {STUDENT_NAME}, Варіант: {VARIANT_NUMBER}\n")
 
     passwords = [
-        "ThreatH@nt3r", "weak123", "P3n3trat10n@Test", "visitor",
-        "Cyber@Defense2023", "normal", "Incident@R3sponse", "standard",
-        "Risk@Analysis", "typical"
+        "ThreatH@nt3r",
+        "weak123",
+        "P3n3trat10n@Test",
+        "visitor",
+        "Cyber@Defense2023",
+        "normal",
+        "Incident@R3sponse",
+        "standard",
+        "Risk@Analysis",
+        "typical",
     ]
 
     criteria = {
         "min_length": 10,
         "require_digits": True,
         "require_upper": True,
-        "require_special": True
+        "require_special": True,
     }
 
-    forbidden = {
-        "weak123", "visitor", "normal", "standard", "typical", "admin"
-    }
+    forbidden = {"weak123", "visitor", "normal", "standard", "typical", "admin"}
 
     random_indices = [random.randint(0, len(passwords) - 1) for _ in range(3)]
     for idx in random_indices:

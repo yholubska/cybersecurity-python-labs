@@ -1,7 +1,7 @@
 import os
 import sys
 
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../../')))
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../")))
 from shared.student import STUDENT_NAME, VARIANT_NUMBER
 
 
@@ -10,18 +10,49 @@ def check_access():
     print(f"Студент: {STUDENT_NAME}, Варіант: {VARIANT_NUMBER}\n")
 
     users = {
-        "crypto_specialist": {"role": "cryptographer", "clearance": 4, "department": "Cryptography", "active": True},
-        "privacy_officer": {"role": "privacy_analyst", "clearance": 3, "department": "Privacy", "active": True},
-        "data_scientist": {"role": "data_analyst", "clearance": 2, "department": "Analytics", "active": True},
-        "field_engineer": {"role": "field_support", "clearance": 2, "department": "Field Ops", "active": True},
-        "test_account": {"role": "testing", "clearance": 1, "department": "QA", "active": False}
+        "crypto_specialist": {
+            "role": "cryptographer",
+            "clearance": 4,
+            "department": "Cryptography",
+            "active": True,
+        },
+        "privacy_officer": {
+            "role": "privacy_analyst",
+            "clearance": 3,
+            "department": "Privacy",
+            "active": True,
+        },
+        "data_scientist": {
+            "role": "data_analyst",
+            "clearance": 2,
+            "department": "Analytics",
+            "active": True,
+        },
+        "field_engineer": {
+            "role": "field_support",
+            "clearance": 2,
+            "department": "Field Ops",
+            "active": True,
+        },
+        "test_account": {
+            "role": "testing",
+            "clearance": 1,
+            "department": "QA",
+            "active": False,
+        },
     }
 
     resources = [
-        ("encryption_keys", 4), ("privacy_policies", 3), ("anonymized_data", 2),
-        ("field_reports", 2), ("crypto_algorithms", 4), ("consent_forms", 1),
-        ("data_classification", 3), ("key_management", 4), ("statistical_models", 2),
-        ("public_datasets", 1)
+        ("encryption_keys", 4),
+        ("privacy_policies", 3),
+        ("anonymized_data", 2),
+        ("field_reports", 2),
+        ("crypto_algorithms", 4),
+        ("consent_forms", 1),
+        ("data_classification", 3),
+        ("key_management", 4),
+        ("statistical_models", 2),
+        ("public_datasets", 1),
     ]
 
     security_levels = ("Unclassified", "For Official Use", "Confidential", "Secret")
